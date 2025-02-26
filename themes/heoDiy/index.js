@@ -58,7 +58,7 @@ const LayoutBase = props => {
   const router = useRouter()
 
   const headerSlot = (
-    <header>
+    <header  className='relative h-screen'>
       {/* 顶部导航 */}
       <Header {...props} />
 
