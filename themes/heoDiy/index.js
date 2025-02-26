@@ -66,6 +66,7 @@ const LayoutBase = props => {
       {/* 通知横幅 */}
       {router.route === '/' ? (
         <>
+          <FullScreenMedia />
           <NoticeBar />
           <Hero {...props} />
         </>
