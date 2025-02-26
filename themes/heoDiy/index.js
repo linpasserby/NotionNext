@@ -100,10 +100,10 @@ const LayoutBase = props => {
       {/* 顶部嵌入 导航栏，首页放hero，文章页放文章详情 */}
       {headerSlot}
 
-      {/*<div>*/}
-      {/*  <NoticeBar />*/}
-      {/*  <Hero {...props} />*/}
-      {/*</div>*/}
+      <div>
+        <NoticeBar />
+        {/*<Hero {...props} />*/}
+      </div>
 
       {/* 主区块 */}
       <main
