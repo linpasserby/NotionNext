@@ -102,7 +102,7 @@ const LayoutBase = props => {
 
       <div>
         <NoticeBar />
-        {/*<Hero {...props} />*/}
+        <Hero {...props} />
       </div>
 
       {/* 主区块 */}
