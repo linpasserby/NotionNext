@@ -11,7 +11,7 @@ export function FullScreenMedia() {
     <div className='flex justify-center w-full h-full absolute top-0 overflow-hidden will-change-transform'>
       <video
         className='block object-cover w-full h-full pointer-events-none'
-        src='https://easyaistorageaccount.blob.core.windows.net/easyai/首页3.mp4'
+        src='/videos/home.mp4'
         loop
         muted
         playsInline
