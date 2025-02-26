@@ -43,7 +43,6 @@ import SideRight from './components/SideRight'
 import CONFIG from './config'
 import { Style } from './style'
 import AISummary from '@/components/AISummary'
-// import { FullScreenMedia }  from '@/themes/heoDiy/components/FullScreenMedia'
 
 /**
  * 基础布局 采用上中下布局，移动端使用顶部侧边导航栏
@@ -59,14 +58,15 @@ const LayoutBase = props => {
   const router = useRouter()
 
   const headerSlot = (
-    <header className='relative h-screen'>
+    <header>
       {/* 顶部导航 */}
       <Header {...props} />
 
       {/* 通知横幅 */}
       {router.route === '/' ? (
         <>
-          {/*<FullScreenMedia />*/}
+          <NoticeBar />
+          <Hero {...props} />
         </>
       ) : null}
       {fullWidth ? null : <PostHeader {...props} isDarkMode={isDarkMode} />}
@@ -99,11 +99,6 @@ const LayoutBase = props => {
 
       {/* 顶部嵌入 导航栏，首页放hero，文章页放文章详情 */}
       {headerSlot}
-
-      <div>
-        <NoticeBar />
-        <Hero {...props} />
-      </div>
 
       {/* 主区块 */}
       <main
