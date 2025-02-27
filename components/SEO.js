@@ -258,6 +258,10 @@ const getSEOMeta = (props, router, locale) => {
         slug: 'tag',
         type: 'website'
       }
+    case '/moments':
+      return {
+        title: `瞬间 | ${siteInfo?.title}`
+      }
     case '/category':
       return {
         title: `${locale.COMMON.CATEGORY} | ${siteInfo?.title}`,

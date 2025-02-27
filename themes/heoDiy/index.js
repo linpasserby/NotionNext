@@ -44,6 +44,7 @@ import CONFIG from './config'
 import { Style } from './style'
 import AISummary from '@/components/AISummary'
 import { FullScreenMedia } from './components/FullScreenMedia'
+import { MomentsCard } from './components/MomentsCard'
 
 /**
  * 基础布局 采用上中下布局，移动端使用顶部侧边导航栏
@@ -59,8 +60,7 @@ const LayoutBase = props => {
   const router = useRouter()
 
   const headerSlot = (
-    <header
-      className={`relative ${router.route === '/' ? 'h-screen' : ''}`}>
+    <header className={`relative ${router.route === '/' ? 'h-screen' : ''}`}>
       {/* 顶部导航 */}
       <Header {...props} />
 
@@ -88,7 +88,11 @@ const LayoutBase = props => {
 
   // 右侧栏 用户信息+标签列表
   const slotRight =
-    router.route === '/404' || fullWidth ? null : <SideRight {...props} />
+    router.route === '/404' ||
+    router.route === '/moments' ||
+    fullWidth ? null : (
+      <SideRight {...props} />
+    )
 
   const maxWidth = fullWidth ? 'max-w-[96rem] mx-auto' : 'max-w-[86rem]' // 普通最大宽度是86rem和顶部菜单栏对齐，留空则与窗口对齐
 
@@ -128,7 +132,7 @@ const LayoutBase = props => {
             {children}
           </div>
 
-          <div className='lg:px-2'></div>
+          {router.route !== '/moments' && <div className='lg:px-2'></div>}
 
           <div className='hidden xl:block'>
             {/* 主区快右侧 */}
@@ -510,6 +514,10 @@ const LayoutTagIndex = props => {
   )
 }
 
+const LayoutMoments = props => {
+  return <MomentsCard />
+}
+
 export {
   Layout404,
   LayoutArchive,
@@ -520,5 +528,6 @@ export {
   LayoutSearch,
   LayoutSlug,
   LayoutTagIndex,
+  LayoutMoments,
   CONFIG as THEME_CONFIG
 }

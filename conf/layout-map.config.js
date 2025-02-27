@@ -18,6 +18,7 @@ module.exports = {
     '/search/[keyword]/page/[page]': 'LayoutSearch',
     '/404': 'Layout404',
     '/tag': 'LayoutTagIndex',
+    '/moments': 'LayoutMoments',
     '/category': 'LayoutCategoryIndex',
     '/[prefix]': 'LayoutSlug',
     '/[prefix]/[slug]': 'LayoutSlug',

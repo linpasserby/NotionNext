@@ -1,5 +1,6 @@
 import { isBrowser } from '@/lib/utils'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 /**
  * 一个swipe组件
@@ -8,11 +9,12 @@ import { useEffect, useState } from 'react'
  * @returns
  */
 export function Swipe({ items }) {
+  const router = useRouter()
   const [activeIndex, setActiveIndex] = useState(0)
 
   const handleClick = item => {
     if (isBrowser) {
-      window.open(item?.url)
+      router.push('/moments')
     }
   }
 
