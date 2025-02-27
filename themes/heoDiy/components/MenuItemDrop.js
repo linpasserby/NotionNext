@@ -18,14 +18,14 @@ export const MenuItemDrop = ({ link }) => {
         <Link
           target={link?.target}
           href={link?.href}
-          className=' hover:bg-black hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-3 py-1 no-underline tracking-widest'>
+          className=' hover:bg-black hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-3 py-1 no-underline tracking-[6px]'>
           {link?.icon && <i className={link?.icon} />} {link?.name}
         </Link>
       )}
       {/* 含子菜单的按钮 */}
       {hasSubMenu && (
         <>
-          <div className='cursor-pointer  hover:bg-black hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-3 py-1 no-underline tracking-widest'>
+          <div className='cursor-pointer  hover:bg-black hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-3 py-1 no-underline tracking-[6px]'>
             {link?.icon && <i className={link?.icon} />} {link?.name}
           </div>
         </>
@@ -39,7 +39,7 @@ export const MenuItemDrop = ({ link }) => {
             return (
               <li
                 key={index}
-                className='cursor-pointer hover:bg-blue-600 dark:hover:bg-yellow-600 hover:text-white text-gray-900 dark:text-gray-100  tracking-widest transition-all duration-200 py-1 pr-6 pl-3'>
+                className='cursor-pointer hover:bg-blue-600 dark:hover:bg-yellow-600 hover:text-white text-gray-900 dark:text-gray-100  tracking-[6px] transition-all duration-200 py-1 pr-6 pl-3'>
                 <Link href={sLink.href} target={link?.target}>
                   <span className='text-sm text-nowrap font-extralight'>
                     {link?.icon && <i className={sLink?.icon}> &nbsp; </i>}
