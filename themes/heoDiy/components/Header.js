@@ -22,6 +22,8 @@ const Header = props => {
   const [navBgWhite, setBgWhite] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
 
+  const { siteInfo } = props
+
   const router = useRouter()
   const slideOverRef = useRef()
 
@@ -151,22 +153,21 @@ const Header = props => {
           {/* 中间菜单 */}
           <div
             id='nav-bar-swipe'
-            className={`hidden lg:flex flex-grow flex-col items-center justify-center h-full relative w-full`}>
+            className={`relative hidden h-full w-full flex-grow flex-col items-center justify-center lg:flex`}>
             <div
-              className={`absolute transition-all duration-700 ${activeIndex === 0 ? 'opacity-100 mt-0' : '-mt-20 opacity-0 invisible'}`}>
+              className={`absolute transition-all duration-700 ${activeIndex === 0 ? 'mt-0 opacity-100' : 'invisible -mt-20 opacity-0'}`}>
               <MenuListTop {...props} />
             </div>
             <div
-              className={`absolute transition-all duration-700 ${activeIndex === 1 ? 'opacity-100 mb-0' : '-mb-20 opacity-0 invisible'}`}>
-              <h1 className='font-bold text-center text-light-400 dark:text-gray-400'>
-                {siteConfig('AUTHOR') || siteConfig('TITLE')}{' '}
-                {siteConfig('BIO') && <>|</>} {siteConfig('BIO')}
+              className={`absolute transition-all duration-700 ${activeIndex === 1 ? 'mb-0 opacity-100' : 'invisible -mb-20 opacity-0'}`}>
+              <h1 className='text-light-400 text-center font-bold dark:text-gray-400'>
+                {siteInfo?.title} | {siteInfo?.description}
               </h1>
             </div>
           </div>
 
           {/* 右侧固定 */}
-          <div className='flex flex-shrink-0 justify-end items-center w-48'>
+          <div className='flex w-48 flex-shrink-0 items-center justify-end'>
             <RandomPostButton {...props} />
             <SearchButton {...props} />
             {!JSON.parse(siteConfig('THEME_SWITCH')) && (
@@ -179,7 +180,7 @@ const Header = props => {
             {/* 移动端菜单按钮 */}
             <div
               onClick={toggleMenuOpen}
-              className='flex lg:hidden w-8 justify-center items-center h-8 cursor-pointer'>
+              className='flex h-8 w-8 cursor-pointer items-center justify-center lg:hidden'>
               <i className='fas fa-bars' />
             </div>
           </div>
