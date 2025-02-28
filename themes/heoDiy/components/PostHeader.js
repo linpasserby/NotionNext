@@ -22,7 +22,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
   return (
     <div
       id='post-bg'
-      className='md:mb-0 -mb-5 w-full h-[30rem] relative md:flex-shrink-0 overflow-hidden bg-cover bg-center bg-no-repeat z-10'>
+      className='relative z-10 -mb-5 h-[30rem] w-full overflow-hidden bg-cover bg-center bg-no-repeat md:mb-0 md:flex-shrink-0'>
       <style jsx>{`
         .coverdiv:after {
           position: absolute;
@@ -37,17 +37,17 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
       `}</style>
 
       <div
-        className={`${isDarkMode ? 'bg-[#CA8A04]' : 'bg-[#0060e0]'} absolute top-0 w-full h-full py-10 flex justify-center items-center`}>
+        className={`${isDarkMode ? 'bg-[#CA8A04]' : 'bg-[#0060e0]'} absolute top-0 flex h-full w-full items-center justify-center py-10`}>
         {/* 文章背景图 */}
         <div
           id='post-cover-wrapper'
           style={{
             filter: 'blur(15px)'
           }}
-          className='coverdiv lg:opacity-50 lg:translate-x-96 lg:rotate-12'>
+          className='coverdiv lg:translate-x-96 lg:rotate-12 lg:opacity-50'>
           <LazyImage
             id='post-cover'
-            className='w-full h-full object-cover max-h-[50rem] min-w-[50vw] min-h-[20rem]'
+            className='h-full max-h-[50rem] min-h-[20rem] w-full min-w-[50vw] object-cover'
             src={headerImage}
           />
         </div>
@@ -55,9 +55,9 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
         {/* 文章文字描述 */}
         <div
           id='post-info'
-          className='absolute top-48 z-10 flex flex-col space-y-4 lg:-mt-12 w-full max-w-[86rem] px-5'>
+          className='absolute top-48 z-10 flex w-full max-w-[86rem] flex-col space-y-4 px-5 lg:-mt-12'>
           {/* 分类+标签 */}
-          <div className='flex justify-center md:justify-start items-center gap-4'>
+          <div className='flex items-center justify-center gap-4 md:justify-start'>
             {post.category && (
               <>
                 <Link
@@ -65,7 +65,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
                   className='mr-4'
                   passHref
                   legacyBehavior>
-                  <div className='cursor-pointer font-sm font-bold px-3 py-1 rounded-lg  hover:bg-white text-white bg-blue-500 dark:bg-yellow-500 hover:text-blue-500 duration-200 '>
+                  <div className='font-sm cursor-pointer rounded-lg bg-blue-500 px-3 py-1 font-bold text-white duration-200 hover:bg-white hover:text-blue-500 dark:bg-yellow-500'>
                     {post.category}
                   </div>
                 </Link>
@@ -73,17 +73,17 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
             )}
 
             {post.tagItems && (
-              <div className='hidden md:flex justify-center flex-nowrap overflow-x-auto'>
+              <div className='hidden flex-nowrap justify-center overflow-x-auto md:flex'>
                 {post.tagItems.map((tag, index) => (
                   <Link
                     key={index}
                     href={`/tag/${encodeURIComponent(tag.name)}`}
                     passHref
                     className={
-                      'cursor-pointer inline-block text-gray-50 hover:text-white duration-200 py-0.5 px-1 whitespace-nowrap '
+                      'inline-block cursor-pointer whitespace-nowrap px-1 py-0.5 text-gray-50 duration-200 hover:text-white'
                     }>
-                    <div className='font-light flex items-center'>
-                      <HashTag className='text-gray-200 stroke-2 mr-0.5 w-3 h-3' />{' '}
+                    <div className='flex items-center font-light'>
+                      <HashTag className='mr-0.5 h-3 w-3 stroke-2 text-gray-200' />{' '}
                       {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
                     </div>
                   </Link>
@@ -93,7 +93,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
           </div>
 
           {/* 文章Title */}
-          <div className='max-w-5xl font-bold text-3xl lg:text-5xl md:leading-snug shadow-text-md flex  justify-center md:justify-start text-white'>
+          <div className='shadow-text-md flex max-w-5xl justify-center text-3xl font-bold text-white md:justify-start md:leading-snug lg:text-5xl'>
             {siteConfig('POST_TITLE_ICON') && (
               <NotionIcon icon={post.pageIcon} />
             )}
@@ -101,37 +101,37 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
           </div>
 
           {/* 标题底部补充信息 */}
-          <section className='flex-wrap dark:text-gray-200 text-opacity-70 shadow-text-md flex text-sm  justify-center md:justify-start mt-4 text-white font-light leading-8'>
-            <div className='flex justify-center '>
+          <section className='shadow-text-md mt-4 flex flex-wrap justify-center text-sm font-light leading-8 text-white text-opacity-70 dark:text-gray-200 md:justify-start'>
+            <div className='flex justify-center'>
               <div className='mr-2'>
                 <WordCount
                   wordCount={post.wordCount}
                   readTime={post.readTime}
                 />
               </div>
-              {post?.type !== 'Page' && (
-                <>
-                  <Link
-                    href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
-                    passHref
-                    className='pl-1 mr-2 cursor-pointer hover:underline'>
-                    <i className='fa-regular fa-calendar'></i>{' '}
-                    {post?.publishDay}
-                  </Link>
-                </>
-              )}
+            </div>
 
-              <div className='pl-1 mr-2'>
-                <i className='fa-regular fa-calendar-check'></i>{' '}
-                {post.lastEditedDay}
-              </div>
+            {post?.type !== 'Page' && (
+              <>
+                <Link
+                  href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
+                  passHref
+                  className='mr-2 cursor-pointer pl-1 hover:underline'>
+                  <i className='fa-regular fa-calendar'></i> {post?.publishDay}
+                </Link>
+              </>
+            )}
+
+            <div className='mr-2 pl-1'>
+              <i className='fa-regular fa-calendar-check'></i>{' '}
+              {post.lastEditedDay}
             </div>
 
             {/* 阅读统计 */}
             {ANALYTICS_BUSUANZI_ENABLE && (
-              <div className='busuanzi_container_page_pv font-light mr-2'>
+              <div className='busuanzi_container_page_pv mr-2 font-light'>
                 <i className='fa-solid fa-fire-flame-curved'></i>{' '}
-                <span className='mr-2 busuanzi_value_page_pv' />
+                <span className='busuanzi_value_page_pv mr-2' />
               </div>
             )}
           </section>
