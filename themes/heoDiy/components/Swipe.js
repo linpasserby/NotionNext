@@ -26,15 +26,15 @@ export function Swipe({ items }) {
   }, [activeIndex, items.length])
 
   return (
-    <div className='h-full relative w-full overflow-hidden'>
+    <div className='relative h-full w-full overflow-hidden'>
       {items.map((item, index) => (
         <div
           onClick={() => handleClick(item)}
           key={index}
-          className={`whitespace-nowrap absolute top-0 bottom-0 w-full h-full flex justify-center items-center line-clamp-1 transform transition-transform duration-500 ${
+          className={`absolute bottom-0 top-0 line-clamp-1 flex h-full w-full transform items-center whitespace-nowrap transition-transform duration-500 sm:justify-center ${
             index === activeIndex
-              ? 'translate-y-0 slide-in'
-              : 'translate-y-full slide-out'
+              ? 'slide-in translate-y-0'
+              : 'slide-out translate-y-full'
           }`}>
           {item.title}
         </div>
