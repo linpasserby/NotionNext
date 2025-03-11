@@ -52,7 +52,7 @@ export function InfoCard(props) {
   }, [])
 
   return (
-    <Card className="fadeInUp relative flex w-72 flex-col overflow-hidden bg-white !p-0 text-white dark:bg-yellow-600">
+    <Card className="fadeInUp relative flex w-72 flex-col overflow-hidden bg-white !p-0 text-white dark:bg-[#1e1e1e]">
       {/* 信息卡牌第一行 */}
       <div className="flex justify-center p-4">
         {/* 问候语 */}
@@ -80,7 +80,7 @@ export function InfoCard(props) {
           </div>
         </div>
       </div>
-      <div className="flex justify-center p-4 text-sm text-[#9ca3af]">
+      <div className="flex justify-center p-4 text-sm text-[#9ca3af] dark:text-gray-100">
         没有BUG的代码是不完美的
       </div>
       <div className="w-full">
@@ -88,10 +88,12 @@ export function InfoCard(props) {
           <div key={index} className="w-full border-t border-gray-100">
             <button
               onClick={() => togglePanel(index)}
-              className="flex w-full items-center justify-between p-3 text-left hover:bg-gray-50">
-              <div className="text-sm text-gray-600">{panel.title}</div>
+              className="flex w-full items-center justify-between p-3 text-left hover:bg-gray-50 dark:hover:bg-gray-50/10">
+              <div className="text-sm text-gray-600 dark:text-gray-100">
+                {panel.title}
+              </div>
               <span
-                className={`relative inline-block h-3 w-3 before:absolute before:h-2 before:w-2 before:origin-center before:border-b-2 before:border-r-2 before:border-[#9ca3af] before:transition-[transform_0.3s_ease-in-out] before:content-[''] ${activePanel === index ? "before:left-[2px] before:top-[1px] before:rotate-45" : "before:left-0 before:top-[2px] before:-rotate-45"}`}
+                className={`relative inline-block h-3 w-3 before:absolute before:h-2 before:w-2 before:origin-center before:border-b-2 before:border-r-2 before:border-[#9ca3af] before:transition-[transform_0.3s_ease-in-out] before:content-[''] dark:before:border-gray-100 ${activePanel === index ? "before:left-[2px] before:top-[1px] before:rotate-45" : "before:left-0 before:top-[2px] before:-rotate-45"}`}
               />
             </button>
             <div
@@ -104,7 +106,9 @@ export function InfoCard(props) {
                     : "0px"
               }}>
               <div className="p-3">
-                <p className="text-sm text-gray-500">{panel.content}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-100">
+                  {panel.content}
+                </p>
               </div>
             </div>
           </div>
