@@ -4,53 +4,18 @@ const CONFIG = {
 
   HEO_HOME_BANNER_ENABLE: true,
 
-  HEO_SITE_CREATE_TIME: '2025-02-22', // 建站日期，用于计算网站运行的第几天
+  HEO_SITE_CREATE_TIME: "2025-02-22", // 建站日期，用于计算网站运行的第几天
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
     {
-      title: '你站在桥上看风景，看风景的人在楼上看你。—— 卞之琳',
-      time: '2025-02-14'
+      title: "你站在桥上看风景，看风景的人在楼上看你。—— 卞之琳",
+      time: "2025-02-14"
     },
     {
       title:
-        '我从不奢望活在怎样的世界里，我只希望这个世界值得我活下去。—— 银魂',
-      time: '2025-02-03'
-    },
-    {
-      title: '人总是会死的，但重要的不是死，而是死的时候你在做什么。—— 海贼王',
-      time: '2025-02-21'
-    },
-    {
-      title: '无论多么黑暗的夜晚，清晨总会到来。—— 魔法少女小圆',
-      time: '2025-02-09'
-    },
-    {
-      title: '我并不是天才，我只是把别人喝咖啡的时间用在了工作上。—— 鲁迅',
-      time: '2025-02-17'
-    },
-    {
-      title:
-        '即使是微不足道的小事，只要去做，就有改变的可能。—— 克拉克·肯特（超人）',
-      time: '2025-02-06'
-    },
-    {
-      title:
-        '世界上只有一种真正的英雄主义，那就是在认清生活的真相后依然热爱它。—— 罗曼·罗兰',
-      time: '2025-02-25'
-    },
-    {
-      title: '我们都在阴沟里，但仍有人仰望星空。—— 奥斯卡·王尔德',
-      time: '2025-02-12'
-    },
-    {
-      title: '活着本身就是意义，只要活着就会有好事发生。—— 奇诺之旅',
-      time: '2025-02-19'
-    },
-    {
-      title:
-        '我认为人生最大的勇敢之一，就是经历欺骗和伤害之后，还能保持信任和爱的能力。—— 廖一梅',
-      time: '2025-02-01'
+        "我从不奢望活在怎样的世界里，我只希望这个世界值得我活下去。—— 银魂",
+      time: "2025-02-03"
     }
   ],
 
@@ -58,125 +23,124 @@ const CONFIG = {
   HEO_HERO_REVERSE: false,
   // 博客主体区左右侧组件颠倒位置
   HEO_HERO_BODY_REVERSE: false,
-
   // 英雄区(首页顶部大卡)
-  HEO_HERO_TITLE_1: '分享编程',
-  HEO_HERO_TITLE_2: '与思维认知',
-  HEO_HERO_TITLE_3: 'TANGLY1024.COM',
-  HEO_HERO_TITLE_4: '新版上线',
-  HEO_HERO_TITLE_5: 'NotionNext4.0 轻松定制主题',
-  HEO_HERO_TITLE_LINK: 'https://tangly1024.com',
+  HEO_HERO_TITLE_1: "分享编程",
+  HEO_HERO_TITLE_2: "与思维认知",
+  HEO_HERO_TITLE_3: "PASSERBY-LIN.COM",
+  HEO_HERO_TITLE_4: "",
+  HEO_HERO_TITLE_5: "用代码表达言语的魅力，用代码书写山河的壮丽",
+  HEO_HERO_TITLE_LINK: "https://tangly1024.com",
   // 英雄区遮罩文字
-  HEO_HERO_COVER_TITLE: '随便逛逛',
+  HEO_HERO_COVER_TITLE: "随便逛逛",
 
   // 英雄区显示三个置顶分类
   HEO_HERO_CATEGORY_1: {
-    title: '必看精选',
-    url: '/tag/必看精选'
+    title: "必看精选",
+    url: "/tag/必看精选"
   },
   HEO_HERO_CATEGORY_2: {
-    title: '热门文章',
-    url: '/tag/热门文章'
+    title: "热门文章",
+    url: "/tag/热门文章"
   },
   HEO_HERO_CATEGORY_3: {
-    title: '实用教程',
-    url: '/tag/实用教程'
+    title: "实用教程",
+    url: "/tag/实用教程"
   },
   // 英雄区右侧推荐文章标签, 例如 [推荐] , 最多六篇文章; 若留空白''，则推荐最近更新文章
-  HEO_HERO_RECOMMEND_POST_TAG: '推荐',
+  HEO_HERO_RECOMMEND_POST_TAG: "推荐",
   HEO_HERO_RECOMMEND_POST_SORT_BY_UPDATE_TIME: false, // 推荐文章排序，为`true`时将强制按最后修改时间倒序
   //   HERO_RECOMMEND_COVER: 'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg', // 英雄区右侧图片
 
   // 右侧个人资料卡牌欢迎语，点击可自动切换
   HEO_INFOCARD_GREETINGS: [
-    '你好！我是',
-    '🔍 分享与热心帮助',
-    '🤝 专修交互与设计',
-    '🏃 脚踏实地行动派',
-    '🏠 智能家居小能手',
-    '🤖️ 数码科技爱好者',
-    '🧱 团队小组发动机'
+    "你好！我是",
+    "🔍 分享与热心帮助",
+    "🤝 专修交互与设计",
+    "🏃 脚踏实地行动派",
+    "🏠 智能家居小能手",
+    "🤖️ 数码科技爱好者",
+    "🧱 团队小组发动机"
   ],
 
   // 个人资料底部按钮
-  HEO_INFO_CARD_URL1: '/about',
-  HEO_INFO_CARD_ICON1: 'fas fa-user',
-  HEO_INFO_CARD_URL2: 'https://github.com/tangly1024',
-  HEO_INFO_CARD_ICON2: 'fab fa-github',
-  HEO_INFO_CARD_URL3: 'https://www.tangly1024.com',
-  HEO_INFO_CARD_TEXT3: '了解更多',
+  HEO_INFO_CARD_URL1: "/about",
+  HEO_INFO_CARD_ICON1: "fas fa-user",
+  HEO_INFO_CARD_URL2: "https://github.com/tangly1024",
+  HEO_INFO_CARD_ICON2: "fab fa-github",
+  HEO_INFO_CARD_URL3: "https://www.tangly1024.com",
+  HEO_INFO_CARD_TEXT3: "了解更多",
 
   // 用户技能图标
   HEO_GROUP_ICONS: [
     {
-      title_1: 'AfterEffect',
-      img_1: '/images/heo/20239df3f66615b532ce571eac6d14ff21cf072602.webp',
-      color_1: '#989bf8',
-      title_2: 'Sketch',
-      img_2: '/images/heo/2023e0ded7b724a39f12d59c3dc8fbdc7cbe074202.webp',
-      color_2: '#ffffff'
+      title_1: "AfterEffect",
+      img_1: "/images/heo/20239df3f66615b532ce571eac6d14ff21cf072602.webp",
+      color_1: "#989bf8",
+      title_2: "Sketch",
+      img_2: "/images/heo/2023e0ded7b724a39f12d59c3dc8fbdc7cbe074202.webp",
+      color_2: "#ffffff"
     },
     {
-      title_1: 'Docker',
-      img_1: '/images/heo/20231108a540b2862d26f8850172e4ea58ed075102.webp',
-      color_1: '#57b6e6',
-      title_2: 'Photoshop',
-      img_2: '/images/heo/2023e4058a91608ea41751c4f102b131f267075902.webp',
-      color_2: '#4082c3'
+      title_1: "Docker",
+      img_1: "/images/heo/20231108a540b2862d26f8850172e4ea58ed075102.webp",
+      color_1: "#57b6e6",
+      title_2: "Photoshop",
+      img_2: "/images/heo/2023e4058a91608ea41751c4f102b131f267075902.webp",
+      color_2: "#4082c3"
     },
     {
-      title_1: 'FinalCutPro',
-      img_1: '/images/heo/20233e777652412247dd57fd9b48cf997c01070702.webp',
-      color_1: '#ffffff',
-      title_2: 'Python',
-      img_2: '/images/heo/20235c0731cd4c0c95fc136a8db961fdf963071502.webp',
-      color_2: '#ffffff'
+      title_1: "FinalCutPro",
+      img_1: "/images/heo/20233e777652412247dd57fd9b48cf997c01070702.webp",
+      color_1: "#ffffff",
+      title_2: "Python",
+      img_2: "/images/heo/20235c0731cd4c0c95fc136a8db961fdf963071502.webp",
+      color_2: "#ffffff"
     },
     {
-      title_1: 'Swift',
-      img_1: '/images/heo/202328bbee0b314297917b327df4a704db5c072402.webp',
-      color_1: '#eb6840',
-      title_2: 'Principle',
-      img_2: '/images/heo/2023f76570d2770c8e84801f7e107cd911b5073202.webp',
-      color_2: '#8f55ba'
+      title_1: "Swift",
+      img_1: "/images/heo/202328bbee0b314297917b327df4a704db5c072402.webp",
+      color_1: "#eb6840",
+      title_2: "Principle",
+      img_2: "/images/heo/2023f76570d2770c8e84801f7e107cd911b5073202.webp",
+      color_2: "#8f55ba"
     },
     {
-      title_1: 'illustrator',
-      img_1: '/images/heo/20237359d71b45ab77829cee5972e36f8c30073902.webp',
-      color_1: '#f29e39',
-      title_2: 'CSS3',
-      img_2: '/images/heo/20237c548846044a20dad68a13c0f0e1502f074602.webp',
-      color_2: '#2c51db'
+      title_1: "illustrator",
+      img_1: "/images/heo/20237359d71b45ab77829cee5972e36f8c30073902.webp",
+      color_1: "#f29e39",
+      title_2: "CSS3",
+      img_2: "/images/heo/20237c548846044a20dad68a13c0f0e1502f074602.webp",
+      color_2: "#2c51db"
     },
     {
-      title_1: 'JS',
-      img_1: '/images/heo/2023786e7fc488f453d5fb2be760c96185c0075502.webp',
-      color_1: '#f7cb4f',
-      title_2: 'HTML',
-      img_2: '/images/heo/202372b4d760fd8a497d442140c295655426070302.webp',
-      color_2: '#e9572b'
+      title_1: "JS",
+      img_1: "/images/heo/2023786e7fc488f453d5fb2be760c96185c0075502.webp",
+      color_1: "#f7cb4f",
+      title_2: "HTML",
+      img_2: "/images/heo/202372b4d760fd8a497d442140c295655426070302.webp",
+      color_2: "#e9572b"
     },
     {
-      title_1: 'Git',
-      img_1: '/images/heo/2023ffa5707c4e25b6beb3e6a3d286ede4c6071102.webp',
-      color_1: '#df5b40',
-      title_2: 'Rhino',
-      img_2: '/images/heo/20231ca53fa0b09a3ff1df89acd7515e9516173302.webp',
-      color_2: '#1f1f1f'
+      title_1: "Git",
+      img_1: "/images/heo/2023ffa5707c4e25b6beb3e6a3d286ede4c6071102.webp",
+      color_1: "#df5b40",
+      title_2: "Rhino",
+      img_2: "/images/heo/20231ca53fa0b09a3ff1df89acd7515e9516173302.webp",
+      color_2: "#1f1f1f"
     }
   ],
 
   HEO_SOCIAL_CARD: true, // 是否显示右侧，点击加入社群按钮
-  HEO_SOCIAL_CARD_TITLE_1: '交流频道',
-  HEO_SOCIAL_CARD_TITLE_2: '加入我们的社群讨论分享',
-  HEO_SOCIAL_CARD_TITLE_3: '点击加入社群',
-  HEO_SOCIAL_CARD_URL: 'https://docs.tangly1024.com/article/how-to-question',
+  HEO_SOCIAL_CARD_TITLE_1: "交流频道",
+  HEO_SOCIAL_CARD_TITLE_2: "加入我们的社群讨论分享",
+  HEO_SOCIAL_CARD_TITLE_3: "点击加入社群",
+  HEO_SOCIAL_CARD_URL: "https://docs.tangly1024.com/article/how-to-question",
 
   // 底部统计面板文案
-  HEO_POST_COUNT_TITLE: '文章数:',
-  HEO_SITE_TIME_TITLE: '建站天数:',
-  HEO_SITE_VISIT_TITLE: '访问量:',
-  HEO_SITE_VISITOR_TITLE: '访客数:',
+  HEO_POST_COUNT_TITLE: "文章数:",
+  HEO_SITE_TIME_TITLE: "建站天数:",
+  HEO_SITE_VISIT_TITLE: "访问量:",
+  HEO_SITE_VISITOR_TITLE: "访客数:",
 
   // *****  以下配置无效，只是预留开发 ****
   // 菜单配置
