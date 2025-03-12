@@ -29,11 +29,12 @@ export function InfoCard(props) {
   const panels = [
     {
       title: "最喜欢的动漫 📺",
-      content: "命运石之门、进击的巨人、魔法少女小圆、CLANNAD、Angel Beats!..."
+      content:
+        "命运石之门、新世纪福音战士、孤独摇滚、龙与虎、物语系列、Fate、春物、紫罗兰永恒花园、月色真美..."
     },
     {
       title: "最喜欢的女孩子们 🥰",
-      content: "凉宫春日、牧濑红莉栖、鹿目圆、古河渚、立华奏..."
+      content: "加藤惠、牧濑红莉栖、小鸟游六花、小忍、明日香..."
     },
     {
       title: "最喜欢玩的游戏 🎮",
@@ -54,19 +55,19 @@ export function InfoCard(props) {
   return (
     <Card className="fadeInUp relative flex w-72 flex-col overflow-hidden bg-white !p-0 text-white dark:bg-[#1e1e1e]">
       {/* 信息卡牌第一行 */}
-      <div className="flex justify-center p-4">
-        {/* 问候语 */}
-        <GreetingsWords />
-      </div>
+      {/*<div className="flex justify-center p-4">*/}
+      {/*  /!* 问候语 *!/*/}
+      {/*  <GreetingsWords />*/}
+      {/*</div>*/}
       {/* 头像 */}
       <div className="relative my-6">
         <div
-          className={`${isSlugPage ? "absolute right-0 -mr-6 -mt-8 blur hover:scale-150 hover:opacity-0" : ""} flex transform items-center justify-center transition-all duration-200 dark:text-gray-100`}>
+          className={`flex transform items-center justify-center transition-all duration-200 dark:text-gray-100`}>
           <div className="relative origin-bottom transition-all duration-300">
             <LazyImage
               src={siteInfo?.icon}
               className="rounded-full border-[5px] dark:border-black"
-              width={isSlugPage ? 100 : 118}
+              width={118}
               alt={siteConfig("AUTHOR")}
             />
             <div className="absolute bottom-1 right-1">
@@ -80,8 +81,9 @@ export function InfoCard(props) {
           </div>
         </div>
       </div>
-      <div className="flex justify-center p-4 text-sm text-[#9ca3af] dark:text-gray-100">
-        没有BUG的代码是不完美的
+      <div className="flex flex-col justify-center p-4 text-center text-sm text-[#9ca3af] dark:text-gray-100">
+        <p>盛夏的蝉鸣不是噪音,是时光在催熟果实</p>
+        <p>你的焦虑也不是敌人,是心等待破茧成蝶</p>
       </div>
       <div className="w-full">
         {panels.map((panel, index) => (

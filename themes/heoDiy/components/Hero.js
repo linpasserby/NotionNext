@@ -318,8 +318,6 @@ function getTopPosts({ latestPosts, allNavPages }) {
  * @returns
  */
 function TodayCard({ cRef, siteInfo }) {
-  const router = useRouter()
-  const link = siteConfig("HEO_HERO_TITLE_LINK", null, CONFIG)
   const { locale } = useGlobal()
   // 卡牌是否盖住下层
   const [isCoverUp, setIsCoverUp] = useState(true)
@@ -344,14 +342,6 @@ function TodayCard({ cRef, siteInfo }) {
     setIsCoverUp(false)
   }
 
-  /**
-   * 点击卡片跳转的链接
-   * @param {*} e
-   */
-  function handleCardClick(e) {
-    router.push(link)
-  }
-
   return (
     <div
       id="today-card"
@@ -360,10 +350,9 @@ function TodayCard({ cRef, siteInfo }) {
       } absolute top-0 hidden h-full w-full flex-1 flex-col overflow-hidden xl:flex`}>
       <div
         id="card-body"
-        onClick={handleCardClick}
         className={`${
           isCoverUp
-            ? "cursor-pointer opacity-100"
+            ? "opacity-100"
             : "pointer-events-none scale-110 transform opacity-0"
         } today-card relative flex h-full items-end overflow-hidden rounded-xl bg-black shadow transition-all duration-200`}>
         {/* 卡片文字信息 */}
@@ -381,7 +370,7 @@ function TodayCard({ cRef, siteInfo }) {
           {/* 查看更多的按钮 */}
           <div
             onClick={handleClickShowMore}
-            className={`'${isCoverUp ? "" : "pointer-events-none hidden"} glassmorphism group z-10 flex h-10 items-center justify-center rounded-3xl px-3 transition-colors duration-100`}>
+            className={`'${isCoverUp ? "" : "pointer-events-none hidden"} glassmorphism group z-10 flex h-10 cursor-pointer items-center justify-center rounded-3xl px-3 transition-colors duration-100`}>
             <PlusSmall
               className={
                 "mr-2 h-6 w-6 rounded-full bg-white stroke-black transition-all duration-500 group-hover:rotate-180"
@@ -400,7 +389,7 @@ function TodayCard({ cRef, siteInfo }) {
           id="today-card-cover"
           className={`${
             isCoverUp ? "" : "pointer-events-none"
-          } today-card-cover absolute top-0 h-full w-full cursor-pointer object-cover duration-1000 hover:scale-110`}
+          } today-card-cover absolute top-0 h-full w-full object-cover duration-1000 hover:scale-110`}
         />
       </div>
     </div>
