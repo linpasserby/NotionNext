@@ -3,15 +3,15 @@ export function FullScreenMedia() {
     e.preventDefault()
     window.scrollTo({
       top: window.innerHeight - 64,
-      behavior: 'smooth'
+      behavior: "smooth"
     })
   }
 
   return (
-    <div className='flex justify-center w-full h-full absolute top-0 overflow-hidden will-change-transform'>
+    <div className="absolute top-0 flex h-full w-full justify-center overflow-hidden will-change-transform">
       <video
-        className='block object-cover w-full h-full pointer-events-none'
-        src='/videos/home.mp4'
+        className="pointer-events-none block h-full w-full object-cover"
+        src="https://easyaistorageaccount.blob.core.windows.net/easyai/uploadFiles/2025-01-04/首页3 (1).mp4"
         loop
         muted
         playsInline
@@ -19,7 +19,7 @@ export function FullScreenMedia() {
       />
       <a
         onClick={handleScroll}
-        className='scroll-btn absolute text-white/70 bottom-8 z-20 cursor-pointer'>
+        className="scroll-btn absolute bottom-8 z-20 cursor-pointer text-white/70">
         ↓
       </a>
     </div>
