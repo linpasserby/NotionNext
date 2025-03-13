@@ -12,7 +12,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // 扫描项目 /themes下的目录名
 const themes = scanSubdirectories(path.resolve(__dirname, 'themes'))
 // 检测用户开启的多语言
-const locales = (function () {
+const locales = (function() {
   // 根据BLOG_NOTION_PAGE_ID 检查支持多少种语言数据.
   // 支持如下格式配置多个语言的页面id xxx,zh:xxx,en:xxx
   const langs = [BLOG.LANG.slice(0, 2)]
@@ -34,7 +34,7 @@ const locales = (function () {
 
 // 编译前执行
 // eslint-disable-next-line no-unused-vars
-const preBuild = (function () {
+const preBuild = (function() {
   if (
     !process.env.npm_lifecycle_event === 'export' &&
     !process.env.npm_lifecycle_event === 'build'
@@ -90,10 +90,10 @@ const nextConfig = {
   i18n: process.env.EXPORT
     ? undefined
     : {
-        defaultLocale: BLOG.LANG.slice(0, 2),
-        // 支持的所有多语言,按需填写即可
-        locales
-      },
+      defaultLocale: BLOG.LANG.slice(0, 2),
+      // 支持的所有多语言,按需填写即可
+      locales
+    },
   images: {
     // 图片压缩
     formats: ['image/avif', 'image/webp'],
@@ -114,84 +114,91 @@ const nextConfig = {
   redirects: process.env.EXPORT
     ? undefined
     : async () => {
-        return [
-          {
-            source: '/feed',
-            destination: '/rss/feed.xml',
-            permanent: true
-          }
-        ]
-      },
+      return [
+        {
+          source: '/feed',
+          destination: '/rss/feed.xml',
+          permanent: true
+        }
+      ]
+    },
   // 重写url
   rewrites: process.env.EXPORT
     ? undefined
     : async () => {
-        // 处理多语言重定向
-        const langsRewrites = []
-        if (BLOG.NOTION_PAGE_ID.indexOf(',') > 0) {
-          const siteIds = BLOG.NOTION_PAGE_ID.split(',')
-          const langs = []
-          for (let index = 0; index < siteIds.length; index++) {
-            const siteId = siteIds[index]
-            const prefix = extractLangPrefix(siteId)
-            // 如果包含前缀 例如 zh , en 等
-            if (prefix) {
-              langs.push(prefix)
-            }
-            console.log('[Locales]', siteId)
+      // 处理多语言重定向
+      const langsRewrites = []
+      if (BLOG.NOTION_PAGE_ID.indexOf(',') > 0) {
+        const siteIds = BLOG.NOTION_PAGE_ID.split(',')
+        const langs = []
+        for (let index = 0; index < siteIds.length; index++) {
+          const siteId = siteIds[index]
+          const prefix = extractLangPrefix(siteId)
+          // 如果包含前缀 例如 zh , en 等
+          if (prefix) {
+            langs.push(prefix)
           }
-
-          // 映射多语言
-          // 示例： source: '/:locale(zh|en)/:path*' ; :locale() 会将语言放入重写后的 `?locale=` 中。
-          langsRewrites.push(
-            {
-              source: `/:locale(${langs.join('|')})/:path*`,
-              destination: '/:path*'
-            },
-            // 匹配没有路径的情况，例如 [domain]/zh 或 [domain]/en
-            {
-              source: `/:locale(${langs.join('|')})`,
-              destination: '/'
-            },
-            // 匹配没有路径的情况，例如 [domain]/zh/ 或 [domain]/en/
-            {
-              source: `/:locale(${langs.join('|')})/`,
-              destination: '/'
-            }
-          )
+          console.log('[Locales]', siteId)
         }
 
-        return [
-          ...langsRewrites,
-          // 伪静态重写
+        // 映射多语言
+        // 示例： source: '/:locale(zh|en)/:path*' ; :locale() 会将语言放入重写后的 `?locale=` 中。
+        langsRewrites.push(
           {
-            source: '/:path*.html',
+            source: `/:locale(${langs.join('|')})/:path*`,
             destination: '/:path*'
+          },
+          // 匹配没有路径的情况，例如 [domain]/zh 或 [domain]/en
+          {
+            source: `/:locale(${langs.join('|')})`,
+            destination: '/'
+          },
+          // 匹配没有路径的情况，例如 [domain]/zh/ 或 [domain]/en/
+          {
+            source: `/:locale(${langs.join('|')})/`,
+            destination: '/'
           }
-        ]
-      },
+        )
+      }
+
+      return [
+        ...langsRewrites,
+        // 伪静态重写
+        {
+          source: '/:path*.html',
+          destination: '/:path*'
+        }
+      ]
+    },
   headers: process.env.EXPORT
     ? undefined
     : async () => {
-        return [
-          {
-            source: '/:path*{/}?',
-            headers: [
-              { key: 'Access-Control-Allow-Credentials', value: 'true' },
-              { key: 'Access-Control-Allow-Origin', value: '*' },
-              {
-                key: 'Access-Control-Allow-Methods',
-                value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT'
-              },
-              {
-                key: 'Access-Control-Allow-Headers',
-                value:
-                  'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-              }
-            ]
-          }
-        ]
-      },
+      return [
+        {
+          source: '/:path*{/}?',
+          headers: [
+            { key: 'Access-Control-Allow-Credentials', value: 'true' },
+            { key: 'Access-Control-Allow-Origin', value: '*' },
+            {
+              key: 'Access-Control-Allow-Methods',
+              value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT'
+            },
+            {
+              key: 'Access-Control-Allow-Headers',
+              value:
+                'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+            }
+          ]
+        },
+        {
+          source: '/videos/:path*',
+          headers: [
+            { key: 'Content-Type', value: 'application/vnd.apple.mpegurl' },
+            { key: 'Access-Control-Allow-Origin', value: '*' }
+          ]
+        }
+      ]
+    },
   webpack: (config, { dev, isServer }) => {
     // 动态主题：添加 resolve.alias 配置，将动态路径映射到实际路径
     config.resolve.alias['@'] = path.resolve(__dirname)
@@ -213,7 +220,7 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true
   },
-  exportPathMap: async function (
+  exportPathMap: async function(
     defaultPathMap,
     { dev, dir, outDir, distDir, buildId }
   ) {
