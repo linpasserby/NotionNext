@@ -245,5 +245,4 @@ const nextConfig = {
 
 module.exports = process.env.ANALYZE
   ? withBundleAnalyzer(nextConfig)
-  : nextConfig
-// : withPWA(nextConfig)
+  : withPWA(nextConfig)

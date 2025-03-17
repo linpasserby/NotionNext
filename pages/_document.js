@@ -11,7 +11,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang={BLOG.LANG}>
-        {/*<link rel="manifest" href="/manifest.json" />*/}
+        <link rel="manifest" href="/manifest.json" />
         <Head>
           {/* 预加载字体 */}
           {BLOG.FONT_AWESOME && (
