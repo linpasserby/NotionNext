@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import Head from "next/head"
 
 export const FanPlayList = props => {
   const [animeData, setAnimeData] = useState([])
@@ -15,6 +16,9 @@ export const FanPlayList = props => {
   }, [])
   return (
     <div className="w-full">
+      <Head>
+        <meta name="referrer" content="no-referrer" />
+      </Head>
       <ul className="m-0 flex w-full list-none flex-wrap justify-between gap-[10px] p-[10px]">
         {animeData.map((anime, index) => (
           <li className="min-w-[350px] flex-[1] basis-0" key={index}>
