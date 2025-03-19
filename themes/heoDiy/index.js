@@ -45,6 +45,7 @@ import { Style } from "./style"
 import AISummary from "@/components/AISummary"
 import { FullScreenMedia } from "./components/FullScreenMedia"
 import { MomentsCard } from "./components/MomentsCard"
+import { FanPlayList } from "./components/FanPlayList"
 
 /**
  * 基础布局 采用上中下布局，移动端使用顶部侧边导航栏
@@ -90,6 +91,7 @@ const LayoutBase = props => {
   const slotRight =
     router.route === "/404" ||
     router.route === "/moments" ||
+    router.route === "/fan-play" ||
     fullWidth ? null : (
       <SideRight {...props} />
     )
@@ -132,7 +134,9 @@ const LayoutBase = props => {
             {children}
           </div>
 
-          {router.route !== "/moments" && <div className="lg:px-2"></div>}
+          {router.route !== "/moments" && router.route !== "/fan-play" && (
+            <div className="lg:px-2"></div>
+          )}
 
           <div className="hidden xl:block">
             {/* 主区快右侧 */}
@@ -518,6 +522,10 @@ const LayoutMoments = props => {
   return <MomentsCard />
 }
 
+const LayoutFanPlay = props => {
+  return <FanPlayList />
+}
+
 export {
   Layout404,
   LayoutArchive,
@@ -529,5 +537,6 @@ export {
   LayoutSlug,
   LayoutTagIndex,
   LayoutMoments,
+  LayoutFanPlay,
   CONFIG as THEME_CONFIG
 }
