@@ -8,11 +8,27 @@ const FanPlay = props => {
   return <DynamicLayout theme={theme} layoutName="LayoutFanPlay" {...props} />
 }
 
-export async function getStaticProps(req) {
-  const { locale } = req
+export async function getServerSideProps(context) {
+  const { locale } = context
 
-  const props = (await getGlobalData({ from: "fan-play", locale })) || {}
-  return { props }
+  // 获取全局数据
+  const globalData = await getGlobalData({ from: "fan-play", locale }) || {}
+
+  // 获取番剧数据
+  let animeData = []
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/api/bilibili`)
+    animeData = await response.json()
+  } catch (error) {
+    console.error('Failed to fetch anime data:', error)
+  }
+
+  return {
+    props: {
+      ...globalData,
+      animeData
+    }
+  }
 }
 
 export default FanPlay

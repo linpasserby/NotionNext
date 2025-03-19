@@ -90,9 +90,9 @@ const LayoutBase = props => {
   // 右侧栏 用户信息+标签列表
   const slotRight =
     router.route === "/404" ||
-    router.route === "/moments" ||
-    router.route === "/fan-play" ||
-    fullWidth ? null : (
+      router.route === "/moments" ||
+      router.route === "/fan-play" ||
+      fullWidth ? null : (
       <SideRight {...props} />
     )
 
@@ -523,7 +523,7 @@ const LayoutMoments = props => {
 }
 
 const LayoutFanPlay = props => {
-  return <FanPlayList />
+  return <FanPlayList animeData={props.animeData} />
 }
 
 export {

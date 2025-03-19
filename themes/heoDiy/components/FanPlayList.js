@@ -1,19 +1,6 @@
-import { useEffect, useState } from "react"
 import Head from "next/head"
 
-export const FanPlayList = props => {
-  const [animeData, setAnimeData] = useState([])
-
-  useEffect(() => {
-    fetch("/api/bilibili")
-      .then(res => res.json())
-      .then(data => {
-        setAnimeData(data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
+export const FanPlayList = ({ animeData }) => {
   return (
     <div className="w-full">
       <Head>
