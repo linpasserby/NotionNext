@@ -18,7 +18,7 @@ export const FanPlayList = ({ animeData }) => {
               title={`${anime.title}\n第${anime.epStart}话-${anime.epTitle}`}>
               <img
                 className="h-[120px] w-[200px] shrink-0 object-cover"
-                src={anime.epCover}
+                src={anime.cover}
                 alt={`Cover for ${anime.title}`}
               />
               <div className="flex flex-[1_0_0] flex-col items-start justify-between self-stretch p-[15px]">

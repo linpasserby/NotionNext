@@ -59,7 +59,7 @@ export default async function handler(req, res) {
             title: program.title,
             epNum: program.new_ep.index_show,
             epTitle: program.new_ep.long_title,
-            epCover: program.cover,
+            cover: program.cover,
             epUrl: program.url,
             epProgress: removeTimeFromProgress(program.progress),
             epTime: extractTimeFromProgress(program.progress),
@@ -86,7 +86,13 @@ export default async function handler(req, res) {
 // 异步函数：获取降低明度后的 HEX 颜色值（PNG 格式）
 async function getDarkenedHexColorPng(coverUrl) {
   try {
-    const response = await fetch(coverUrl)
+    const response = await fetch(coverUrl, {
+      headers: {
+        Referer: "https://www.bilibili.com",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      }
+    })
     if (!response.ok) {
       throw new Error("无法获取图片")
     }
@@ -117,7 +123,13 @@ async function getDarkenedHexColorPng(coverUrl) {
 // 异步函数：获取降低明度后的 HEX 颜色值（JPG 格式）
 async function getDarkenedHexColorJpg(coverUrl) {
   try {
-    const response = await fetch(coverUrl)
+    const response = await fetch(coverUrl, {
+      headers: {
+        Referer: "https://www.bilibili.com",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      }
+    })
     if (!response.ok) {
       throw new Error("无法获取图片")
     }
