@@ -22,27 +22,6 @@ function removeTimeFromProgress(str) {
   return str.replace(/\s*\d+:\d+\s*/, "")
 }
 
-// 获取图片的base64编码
-async function getImageBase64(imageUrl) {
-  try {
-    const response = await fetch(imageUrl, {
-      headers: {
-        'Referer': 'https://www.bilibili.com',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    });
-    if (!response.ok) {
-      throw new Error("无法获取图片");
-    }
-    const buffer = await response.buffer();
-    const base64Image = `data:${response.headers.get('content-type')};base64,${buffer.toString('base64')}`;
-    return base64Image;
-  } catch (error) {
-    console.error("获取图片base64编码时出错:", error);
-    return null;
-  }
-}
-
 // 从 Bilibili API 获取番剧列表
 export default async function handler(req, res) {
   let { uuid, buvid3, sid, DedeUserID, DedeUserID_ckMd5, SESSDATA, bili_jct } =
@@ -76,14 +55,11 @@ export default async function handler(req, res) {
         programList.map(async program => {
           const ColorJpg = await getDarkenedHexColorJpg(program.new_ep.cover)
           const ColorPng = await getDarkenedHexColorPng(program.new_ep.cover)
-          const coverBase64 = await getImageBase64(program.cover)
-          const epCoverBase64 = await getImageBase64(program.new_ep.cover)
           return {
             title: program.title,
             epNum: program.new_ep.index_show,
             epTitle: program.new_ep.long_title,
-            epCover: epCoverBase64 || program.new_ep.cover,
-            cover: coverBase64 || program.cover,
+            epCover: program.cover,
             epUrl: program.url,
             epProgress: removeTimeFromProgress(program.progress),
             epTime: extractTimeFromProgress(program.progress),
@@ -110,12 +86,7 @@ export default async function handler(req, res) {
 // 异步函数：获取降低明度后的 HEX 颜色值（PNG 格式）
 async function getDarkenedHexColorPng(coverUrl) {
   try {
-    const response = await fetch(coverUrl, {
-      headers: {
-        'Referer': 'https://www.bilibili.com',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    })
+    const response = await fetch(coverUrl)
     if (!response.ok) {
       throw new Error("无法获取图片")
     }
@@ -146,12 +117,7 @@ async function getDarkenedHexColorPng(coverUrl) {
 // 异步函数：获取降低明度后的 HEX 颜色值（JPG 格式）
 async function getDarkenedHexColorJpg(coverUrl) {
   try {
-    const response = await fetch(coverUrl, {
-      headers: {
-        'Referer': 'https://www.bilibili.com',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    })
+    const response = await fetch(coverUrl)
     if (!response.ok) {
       throw new Error("无法获取图片")
     }
