@@ -2,57 +2,79 @@ import Head from "next/head"
 
 export const FanPlayList = ({ animeData }) => {
   return (
-    <div className="w-full">
+    <div className="w-full px-5 md:px-0">
       <Head>
         <meta name="referrer" content="no-referrer" />
       </Head>
-      <ul className="m-0 flex w-full list-none flex-wrap justify-between gap-[10px] p-[10px]">
+      <div className="flex w-full flex-col gap-3">
         {animeData.map((anime, index) => (
-          <li className="min-w-[350px] flex-[1] basis-0" key={index}>
-            {/*// 为每个番剧创建一个链接*/}
-            <a
-              className="flex items-start overflow-hidden rounded-[15px] bg-[#f7f7f7] p-0"
-              href={anime.epUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`${anime.title}\n第${anime.epStart}话-${anime.epTitle}`}>
-              <img
-                className="h-[120px] w-[200px] shrink-0 object-cover"
-                src={anime.cover}
-                alt={`Cover for ${anime.title}`}
-              />
-              <div className="flex flex-[1_0_0] flex-col items-start justify-between self-stretch p-[15px]">
-                <p className="line-clamp-2 self-stretch font-['Noto_Sans_SC','sans-serif'] text-[14px] font-[500] leading-[120%] text-black">
+          <div className="flex gap-4 border-b py-8" key={index}>
+            <img
+              className="rounded-lg object-cover max-[560px]:h-[146px] max-[560px]:w-[110px] min-[560px]:h-[205px] min-[560px]:w-[154px]"
+              src={anime.cover}
+              alt={anime.title}
+            />
+            <div className="flex flex-1 flex-col">
+              <div className="mb-4">
+                <a
+                  href={anime.epUrl}
+                  target="_blank"
+                  className="border-b-2 border-dotted border-[#425aef] px-1 text-xl font-bold transition-all duration-500 hover:rounded-lg hover:bg-[#425aef] hover:text-white">
                   {anime.title}
-                </p>
-                <div className="flex flex-col gap-[5px] self-stretch font-['Noto_Sans_SC','sans-serif'] text-[12px] font-normal leading-[100%] text-[#383838]">
-                  {/*// 看完的和没看完的显示不同的内容*/}
-                  {anime.epStart < anime.epEnd ? (
-                    <p className="line-clamp-1">
-                      {anime.epNum}/
-                      <span className="font-[800] text-[#ff7200]">
-                        看到{anime.epStart}话{anime.epTime}
-                      </span>
-                    </p>
-                  ) : (
-                    <p className="line-clamp-1">已看完全部{anime.epStart}话</p>
-                  )}
-                  {/*鼠标指针滑过的时候显示完整的标题*/}
-                  <p className="line-clamp-1">{anime.epTitle}</p>
-                  {/* 添加进度条 */}
-                  <div className="relative mt-[5px] h-[5px] w-full overflow-hidden rounded-[5px] bg-white">
-                    <div
-                      className="h-full bg-[#ff7200]"
-                      style={{
-                        width: `${(anime.epStart / anime.epEnd) * 100}%`
-                      }}></div>
+                </a>
+              </div>
+              <div className="flex items-center divide-x divide-[#f2b94b]">
+                <div className="flex flex-col items-center text-xs max-[560px]:w-[49%] min-[560px]:w-[32%] min-[600px]:w-[24%] min-[640px]:w-[19%] min-[680px]:w-[15%] md:w-[13%]">
+                  <div className="mt-1 font-bold text-[#f2b94b]">
+                    {anime.epNum}
+                  </div>
+                </div>
+                <div className="flex flex-col items-center text-xs max-[560px]:w-[49%] min-[560px]:w-[32%] min-[600px]:w-[24%] min-[640px]:w-[19%] min-[680px]:w-[15%] md:w-[13%]">
+                  <div className="font-medium text-[#f2b94b]">
+                    {anime.areas_name}
+                  </div>
+                  <div className="mt-1 font-bold text-[#f2b94b]">
+                    {anime.season_type_name}
+                  </div>
+                </div>
+                <div className="hidden flex-col items-center text-xs min-[600px]:flex min-[600px]:w-[24%] min-[640px]:w-[19%] min-[680px]:w-[15%] md:w-[13%]">
+                  <div className="font-medium text-[#f2b94b]">总播放</div>
+                  <div className="mt-1 font-bold text-[#f2b94b]">
+                    {anime.play_count}万
+                  </div>
+                </div>
+                <div className="hidden flex-col items-center text-xs min-[640px]:flex min-[640px]:w-[19%] min-[680px]:w-[15%] md:w-[13%]">
+                  <div className="font-medium text-[#f2b94b]">追番人数</div>
+                  <div className="mt-1 font-bold text-[#f2b94b]">
+                    {anime.follow_count}万
+                  </div>
+                </div>
+                <div className="hidden flex-col items-center text-xs min-[680px]:flex min-[680px]:w-[15%] md:w-[13%]">
+                  <div className="font-medium text-[#f2b94b]">硬币数</div>
+                  <div className="mt-1 font-bold text-[#f2b94b]">
+                    {anime.coin_count}万
+                  </div>
+                </div>
+                <div className="hidden flex-col items-center text-xs md:flex md:w-[13%]">
+                  <div className="font-medium text-[#f2b94b]">弹幕总数</div>
+                  <div className="mt-1 font-bold text-[#f2b94b]">
+                    {anime.danmaku_count}万
+                  </div>
+                </div>
+                <div className="hidden flex-col items-center text-xs min-[560px]:flex min-[560px]:w-[32%] min-[600px]:w-[24%] min-[640px]:w-[19%] min-[680px]:w-[15%] md:w-[13%]">
+                  <div className="font-medium text-[#f2b94b]">评分</div>
+                  <div className="mt-1 font-bold text-[#f2b94b]">
+                    {anime.score}
                   </div>
                 </div>
               </div>
-            </a>
-          </li>
+              <div className="mt-4 line-clamp-3 font-medium leading-6 text-gray-600">
+                {anime.summary}
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }

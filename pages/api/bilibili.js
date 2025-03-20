@@ -22,6 +22,16 @@ function removeTimeFromProgress(str) {
   return str.replace(/\s*\d+:\d+\s*/, "")
 }
 
+// 格式化数字为万或亿
+function formatNumber(num) {
+  if (num >= 100000000) {
+    return (num / 100000000).toFixed(1) + '亿'
+  } else if (num >= 10000) {
+    return (num / 10000).toFixed(1) + '万'
+  }
+  return num.toString()
+}
+
 // 从 Bilibili API 获取番剧列表
 export default async function handler(req, res) {
   let { uuid, buvid3, sid, DedeUserID, DedeUserID_ckMd5, SESSDATA, bili_jct } =
@@ -65,7 +75,15 @@ export default async function handler(req, res) {
             epTime: extractTimeFromProgress(program.progress),
             epStart: extractNumberFromString(program.progress),
             epEnd: extractNumberFromString(program.new_ep.index_show),
-            epDarkenedColor: ColorJpg || ColorPng
+            epDarkenedColor: ColorJpg || ColorPng,
+            summary: program.summary,
+            season_type_name: program.season_type_name,
+            areas_name: program.areas.map(item => item.name).join(","),
+            play_count: formatNumber(program.stat.view),
+            follow_count: formatNumber(program.stat.follow),
+            coin_count: formatNumber(program.stat.coin),
+            danmaku_count: formatNumber(program.stat.danmaku),
+            score: program.rating.score
           }
         })
       )
