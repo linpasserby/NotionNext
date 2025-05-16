@@ -12,6 +12,8 @@ export async function getServerSideProps(context) {
   const { locale } = context
   const protocol = process.env.VERCEL_ENV === "production" ? "https" : "http"
   const baseUrl = context.req ? `${protocol}://${context.req.headers.host}` : ""
+  console.log("baseUrl:", baseUrl)
+  console.log("Request URL:", `${baseUrl}/api/bilibili`)
 
   // 获取全局数据
   const globalData = (await getGlobalData({ from: "fan-play", locale })) || {}
