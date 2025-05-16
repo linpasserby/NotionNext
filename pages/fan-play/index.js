@@ -10,11 +10,11 @@ const FanPlay = props => {
 
 export async function getServerSideProps(context) {
   const { locale } = context
-  const protocol = process.env.VERCEL_ENV === 'production' ? 'https' : 'http'
-  const baseUrl = context.req ? `${protocol}://${context.req.headers.host}` : ''
+  const protocol = process.env.VERCEL_ENV === "production" ? "https" : "http"
+  const baseUrl = context.req ? `${protocol}://${context.req.headers.host}` : ""
 
   // 获取全局数据
-  const globalData = await getGlobalData({ from: "fan-play", locale }) || {}
+  const globalData = (await getGlobalData({ from: "fan-play", locale })) || {}
 
   // 获取番剧数据
   let animeData = []
@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
     const response = await fetch(`${baseUrl}/api/bilibili`)
     animeData = await response.json()
   } catch (error) {
-    console.error('Failed to fetch anime data:', error)
+    console.error("Failed to fetch anime data:", error)
   }
 
   return {

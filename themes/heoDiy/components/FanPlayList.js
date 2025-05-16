@@ -7,7 +7,7 @@ export const FanPlayList = ({ animeData }) => {
         <meta name="referrer" content="no-referrer" />
       </Head>
       <div className="flex w-full flex-col gap-3">
-        {animeData.map((anime, index) => (
+        {animeData?.map((anime, index) => (
           <div className="flex gap-4 border-b py-8" key={index}>
             <img
               className="rounded-lg object-cover max-[560px]:h-[146px] max-[560px]:w-[110px] min-[560px]:h-[205px] min-[560px]:w-[154px]"
