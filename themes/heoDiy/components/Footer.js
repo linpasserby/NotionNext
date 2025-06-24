@@ -34,7 +34,6 @@ const Footer = () => {
         <div id="footer-bottom-left" className="text-center lg:text-start">
           {/*<PoweredBy />*/}
           <div className="flex gap-x-1">
-            暂时还没有想好写点啥
             <CopyRightDate />
             {/*<a*/}
             {/*  href={'/about'}*/}
