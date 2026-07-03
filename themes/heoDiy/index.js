@@ -44,6 +44,7 @@ import CONFIG from './config'
 import { Style } from './style'
 import AISummary from '@/components/AISummary'
 import ArticleExpirationNotice from '@/components/ArticleExpirationNotice'
+import { FullScreenMedia } from './components/FullScreenMedia'
 
 /**
  * 基础布局 采用上中下布局，移动端使用顶部侧边导航栏
@@ -59,10 +60,22 @@ const LayoutBase = props => {
   const router = useRouter()
 
   const headerSlot = (
-    <header>
+    <header className={`relative ${router.route === '/' ? 'h-screen' : ''}`}>
       {/* 顶部导航 */}
       <Header {...props} />
 
+      {/* 通知横幅 */}
+      {router.route === '/' ? (
+        <>
+          <FullScreenMedia />
+        </>
+      ) : null}
+      {fullWidth ? null : <PostHeader {...props} isDarkMode={isDarkMode} />}
+    </header>
+  )
+
+  const recommendSlot = (
+    <div>
       {/* 通知横幅 */}
       {router.route === '/' ? (
         <>
@@ -70,8 +83,7 @@ const LayoutBase = props => {
           <Hero {...props} />
         </>
       ) : null}
-      {fullWidth ? null : <PostHeader {...props} isDarkMode={isDarkMode} />}
-    </header>
+    </div>
   )
 
   // 右侧栏 用户信息+标签列表
@@ -100,6 +112,8 @@ const LayoutBase = props => {
 
       {/* 顶部嵌入 导航栏，首页放hero，文章页放文章详情 */}
       {headerSlot}
+
+      {recommendSlot}
 
       {/* 主区块 */}
       <main
@@ -274,21 +288,18 @@ const LayoutSlug = props => {
   useEffect(() => {
     // 404
     if (!post) {
-      const timer = setTimeout(
-        () => {
-          if (isBrowser) {
-            const article = document.querySelector(
-              '#article-wrapper #notion-article'
-            )
-            if (!article) {
-              router.push('/404').then(() => {
-                console.warn('找不到页面', router.asPath)
-              })
-            }
+      const timer = setTimeout(() => {
+        if (isBrowser) {
+          const article = document.querySelector(
+            '#article-wrapper #notion-article'
+          )
+          if (!article) {
+            router.push('/404').then(() => {
+              console.warn('找不到页面', router.asPath)
+            })
           }
-        },
-        waiting404
-      )
+        }
+      }, waiting404)
       return () => clearTimeout(timer)
     }
   }, [post, router, waiting404])
