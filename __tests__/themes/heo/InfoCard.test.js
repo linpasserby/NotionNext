@@ -1,4 +1,4 @@
-import { normalizeInfoCardGreetings } from '@/themes/heo/components/InfoCard'
+import { normalizeInfoCardGreetings } from '@/themes/heoDiy/components/InfoCard'
 
 describe('heo InfoCard greetings', () => {
   it('keeps configured greeting arrays intact', () => {
